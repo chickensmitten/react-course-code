@@ -26,7 +26,8 @@ function AllMeetupsPage() {
     <section>
       <h1>All Meetups</h1>
       <ul>
-        {[<li key="1">List 1</li>,<li key="2">List 2</li>, <li key="3">List 3</li>]}
+        {/* {[<li key="1">List 1</li>,<li key="2">List 2</li>, <li key="3">List 3</li>]} */}
+        {/* this demonstrates how jsx shows an array of objects, now imagine it as a function listing the array of objects */}
       </ul>
       <MeetupList meetups={DUMMY_DATA} />
     </section>
