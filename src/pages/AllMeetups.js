@@ -1,35 +1,37 @@
+
+import { useState } from "react";
 import MeetupList from "../components/meetups/MeetupList";
 
-const DUMMY_DATA = [
-  {
-    id: 'm1',
-    title: 'This is a first meetup',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg',
-    address: 'Meetupstreet 5, 12345 Meetup City',
-    description:
-      'This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!',
-  },
-  {
-    id: 'm2',
-    title: 'This is a second meetup',
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg',
-    address: 'Meetupstreet 5, 12345 Meetup City',
-    description:
-      'This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!',
-  },
-];
-
 function AllMeetupsPage() {
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadedMeetups, setLoadedMeetups] = useState([]);
+
+  fetch(
+    "https://udemy-max-react-course-code-default-rtdb.asia-southeast1.firebasedatabase.app/meetups.json"
+  ).then(response => {
+    return response.json();
+  }).then(data => {
+    setIsLoading(false);
+    setLoadedMeetups(data);
+  });
+
+  if (isLoading) {
+    return (
+      <section>
+        <h1>Loading...</h1>
+      </section>
+    );
+  }
+
   return (
     <section>
       <h1>All Meetups</h1>
-      <ul>
+      {/* <ul> */}
         {/* {[<li key="1">List 1</li>,<li key="2">List 2</li>, <li key="3">List 3</li>]} */}
         {/* this demonstrates how jsx shows an array of objects, now imagine it as a function listing the array of objects */}
-      </ul>
-      <MeetupList meetups={DUMMY_DATA} />
+      {/* </ul> */}
+      <MeetupList meetups={loadedMeetups} />
     </section>
   );
 }
