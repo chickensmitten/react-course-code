@@ -1,6 +1,9 @@
+import { useHistory } from "react-router-dom"
 import NewMeetupForm from "../components/meetups/NewMeetupForm"
 
 function NewMeetupPage() {
+  const history = useHistory();
+
   function onAddMeetupHandler(meetupData) {
     return (
       fetch(
@@ -12,7 +15,10 @@ function NewMeetupPage() {
             'Content-Type': 'application/json'
           }
         }
-      )
+      ).then(() => {
+        history.replace('/');
+      })
+      // instead of then, we can use async await. compare this with jerga's code.
     )
   }
 
