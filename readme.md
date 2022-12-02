@@ -15,3 +15,21 @@ for development, when creating realtime database, can enable it in test mode, ra
 React allows setting up refs to DOM elements which establishes connection between the form and submitHandler. It allows you to persist values between renders. For reading form inputs, use Refs. If changing value, then use useState.
 - `useSWR`
 to use SWR, you need to install `npm install SWR`. SWR allows for client side on demand fetching of data in React. Check how it works well with `getStaticProps` in NextJS
+- `useRouter`
+allows you to get values encoded in the URL (among other things like programming navigation with `router.push("/" + props.id);`
+```
+import { useRouter } from 'next/router';
+import Card from '../ui/Card';
+import classes from './MeetupItem.module.css';
+
+function MeetupItem(props) {
+  const router = useRouter();
+
+  function showDetailsHandler() {
+    router.push("/" + props.id);
+  }
+
+  return ( ... );
+}
+export default MeetupItem;
+```
