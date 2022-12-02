@@ -13,3 +13,5 @@ for development, when creating realtime database, can enable it in test mode, ra
 ## React Concepts Refresher
 - `useRef`
 React allows setting up refs to DOM elements which establishes connection between the form and submitHandler. It allows you to persist values between renders. For reading form inputs, use Refs. If changing value, then use useState.
+- `useSWR`
+to use SWR, you need to install `npm install SWR`. SWR allows for client side on demand fetching of data in React. Check how it works well with `getStaticProps` in NextJS
